@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="startTime()">
+    <div id="clock">
+        <p id="date">{{ date }}</p>
+        <p id="time">{{ time }}</p>
+        <p class="text">DIGITAL CLOCK</p>
+    </div>
+</body>
+<script>
+    function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var year = today.getFullYear();
+    var month=today.getMonth();
+    var day= today.getDate();
+    month=checkTime(month);
+    day=checkTime(day);
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('date').innerHTML = year + "-" + month + "-" + day;
+    document.getElementById('time').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+  }
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i};  
+    return i;
+  }
+</script>
+</html>
